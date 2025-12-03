@@ -44,7 +44,7 @@ let divvs = document.querySelectorAll('.card');
 var x = []; 
 var flag = true;  
 let wins = 0;
-
+var tries=0
 function check() {
     
     let card1Src = x[0].firstChild.getAttribute('src');
@@ -56,18 +56,19 @@ function check() {
         x[0].onclick = null;
         x[1].onclick = null;
         wins++;
+        tries++
         if(wins === 6) {
            
        setTimeout(t(), 1500);
        setTimeout(f(), 1500);
        setTimeout(t(), 1500);
-        alert("انت فزت")
+        alert("YOU WIN")
 
             
         }
     } else {
         audioWrong.play();
-        
+        tries++
         x[0].classList.remove('is-flipped'); 
         x[1].classList.remove('is-flipped');
     }
@@ -75,7 +76,7 @@ function check() {
     x = [];
     flag = true;
 }
-
+if (tries===9) {alert("YOU ARE LOOSER")}
 
 for (var i = 0; i < divvs.length; i++) {
     divvs[i].onclick = function () { 
